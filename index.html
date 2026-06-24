@@ -240,6 +240,94 @@
       letter-spacing: -0.2px;
     }
 
+    .verification-profile {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      align-items: stretch;
+    }
+
+    .photo-panel {
+      position: relative;
+      padding: 24px 20px;
+      background:
+        radial-gradient(circle at 50% 14%, rgba(235,176,45,0.16), transparent 38%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5fc 100%);
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .photo-frame {
+      width: 150px;
+      height: 185px;
+      padding: 7px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 2px solid rgba(0,45,95,0.18);
+      box-shadow:
+        0 14px 28px rgba(0,45,95,0.16),
+        inset 0 0 0 1px rgba(235,176,45,0.22);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      border: 2px solid rgba(235,176,45,0.44);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: none;
+      background: #f1f5f9;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #eaf1f8 0%, #ffffff 100%);
+      color: var(--navy);
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .photo-caption {
+      margin-top: 13px;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.55px;
+    }
+
+    .photo-subtitle {
+      margin-top: 5px;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .details-data {
+      min-width: 0;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -443,6 +531,21 @@
         padding-left: 18px;
       }
 
+      .verification-profile {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 22px 16px;
+      }
+
+      .photo-frame {
+        width: 138px;
+        height: 170px;
+      }
+
       td {
         display: block;
         width: 100%;
@@ -572,36 +675,52 @@
               <div class="details-title">Verification Details</div>
             </div>
 
-            <table>
-              <tr>
-                <td><div class="label" id="labelCert">Certificate ID</div></td>
-                <td id="certificateId">-</td>
-              </tr>
-              <tr>
-                <td><div class="label" id="labelName">Candidate Name</div></td>
-                <td id="candidateName">-</td>
-              </tr>
-              <tr>
-                <td><div class="label" id="labelCenter">Training Center</div></td>
-                <td id="trainingCenter">-</td>
-              </tr>
-              <tr>
-                <td><div class="label" id="labelProfession">Service / Profession</div></td>
-                <td id="profession">-</td>
-              </tr>
-              <tr>
-                <td><div class="label" id="labelIssue">Issue Date</div></td>
-                <td id="issueDate">-</td>
-              </tr>
-              <tr>
-                <td><div class="label" id="labelExpiry">Expiry Date</div></td>
-                <td id="expiryDate">-</td>
-              </tr>
-              <tr>
-                <td><div class="label" id="labelRemarks">Remarks</div></td>
-                <td id="remarks">-</td>
-              </tr>
-            </table>
+            <div class="verification-profile">
+              <div class="photo-panel">
+                <div class="photo-frame">
+                  <img id="candidatePhoto" alt="Candidate Photo">
+                  <div class="photo-placeholder" id="photoPlaceholder">
+                    <span id="photoInitials">GS</span>
+                  </div>
+                </div>
+
+                <div class="photo-caption">Candidate Photo</div>
+                <div class="photo-subtitle" id="photoName">Verified Candidate</div>
+              </div>
+
+              <div class="details-data">
+                <table>
+                  <tr>
+                    <td><div class="label" id="labelCert">Certificate ID</div></td>
+                    <td id="certificateId">-</td>
+                  </tr>
+                  <tr>
+                    <td><div class="label" id="labelName">Candidate Name</div></td>
+                    <td id="candidateName">-</td>
+                  </tr>
+                  <tr>
+                    <td><div class="label" id="labelCandidateIdNo">Candidate ID No.</div></td>
+                    <td id="candidateIdNo">-</td>
+                  </tr>
+                  <tr>
+                    <td><div class="label" id="labelProgram">Program</div></td>
+                    <td id="program">-</td>
+                  </tr>
+                  <tr>
+                    <td><div class="label" id="labelIssue">Issue Date</div></td>
+                    <td id="issueDate">-</td>
+                  </tr>
+                  <tr>
+                    <td><div class="label" id="labelExpiry">Expiry Date</div></td>
+                    <td id="expiryDate">-</td>
+                  </tr>
+                  <tr>
+                    <td><div class="label" id="labelRemarks">Remarks</div></td>
+                    <td id="remarks">-</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </section>
 
           <section class="note-box">
@@ -660,7 +779,6 @@
       clipboard: `<svg viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="12" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 5a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="2"/><path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
       shield: `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.7-2.9 8.4-7 10-4.1-1.6-7-5.3-7-10V6l7-3z" stroke="currentColor" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
       user: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4.5 20c1.4-4 4.1-6 7.5-6s6.1 2 7.5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
-      building: `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1.5" stroke="currentColor" stroke-width="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
       briefcase: `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 7V5h6v2M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
       calendar: `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
       calendarCheck: `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16M8 15l2.3 2.2L16 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -674,8 +792,8 @@
     document.getElementById("clipboardIcon").innerHTML = icons.clipboard;
     document.getElementById("labelCert").innerHTML = icons.shield + " Certificate ID";
     document.getElementById("labelName").innerHTML = icons.user + " Candidate Name";
-    document.getElementById("labelCenter").innerHTML = icons.building + " Training Center";
-    document.getElementById("labelProfession").innerHTML = icons.briefcase + " Service / Profession";
+    document.getElementById("labelCandidateIdNo").innerHTML = icons.shield + " Candidate ID No.";
+    document.getElementById("labelProgram").innerHTML = icons.briefcase + " Program";
     document.getElementById("labelIssue").innerHTML = icons.calendar + " Issue Date";
     document.getElementById("labelExpiry").innerHTML = icons.calendarCheck + " Expiry Date";
     document.getElementById("labelRemarks").innerHTML = icons.message + " Remarks";
@@ -712,19 +830,81 @@
     }
 
     function fillData(record) {
-      document.getElementById("certificateId").textContent = record.certificateId || "-";
-      document.getElementById("candidateName").textContent = record.candidateName || "-";
-      document.getElementById("trainingCenter").textContent = record.trainingCenter || "-";
-      document.getElementById("profession").textContent = record.profession || "-";
-      document.getElementById("issueDate").textContent = record.issueDate || "-";
-      document.getElementById("expiryDate").textContent = record.expiryDate || "-";
-      document.getElementById("remarks").textContent = record.remarks || "-";
+      const certificateId = record.certificateId || "";
+      const candidateName = record.candidateName || "";
+      const candidateIdNo = record.candidateIdNo || record.candidateId || record.candidateIDNo || "";
+      const program = record.program || record.service || record.profession || "";
+      const issueDate = record.issueDate || "";
+      const expiryDate = record.expiryDate || "";
+      const remarks = record.remarks || "";
+      const candidatePhoto = record.candidatePhoto || record.photo || record.photoUrl || "";
+
+      document.getElementById("certificateId").textContent = certificateId || "-";
+      document.getElementById("candidateName").textContent = candidateName || "-";
+      document.getElementById("candidateIdNo").textContent = candidateIdNo || "-";
+      document.getElementById("program").textContent = program || "-";
+      document.getElementById("issueDate").textContent = issueDate || "-";
+      document.getElementById("expiryDate").textContent = expiryDate || "-";
+      document.getElementById("remarks").textContent = remarks || "-";
+
+      document.getElementById("photoName").textContent = candidateName || "Verified Candidate";
+      setCandidatePhoto(candidatePhoto, candidateName);
       setStatus(record.status);
+    }
+
+    function setCandidatePhoto(photoUrl, candidateName) {
+      const img = document.getElementById("candidatePhoto");
+      const placeholder = document.getElementById("photoPlaceholder");
+      const initials = document.getElementById("photoInitials");
+      const cleanUrl = String(photoUrl || "").trim();
+
+      initials.textContent = getInitials(candidateName);
+
+      if (!cleanUrl) {
+        img.removeAttribute("src");
+        img.style.display = "none";
+        placeholder.style.display = "flex";
+        return;
+      }
+
+      img.onload = function() {
+        img.style.display = "block";
+        placeholder.style.display = "none";
+      };
+
+      img.onerror = function() {
+        img.removeAttribute("src");
+        img.style.display = "none";
+        placeholder.style.display = "flex";
+      };
+
+      img.src = cleanUrl;
+    }
+
+    function getInitials(name) {
+      const parts = String(name || "GS")
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+      if (!parts.length) return "GS";
+
+      return parts
+        .slice(0, 2)
+        .map(part => part.charAt(0).toUpperCase())
+        .join("");
     }
 
     function showError(message) {
       setStatus("Not Valid");
       document.getElementById("remarks").textContent = message || "Verification failed.";
+      document.getElementById("certificateId").textContent = "-";
+      document.getElementById("candidateName").textContent = "-";
+      document.getElementById("candidateIdNo").textContent = "-";
+      document.getElementById("program").textContent = "-";
+      document.getElementById("issueDate").textContent = "-";
+      document.getElementById("expiryDate").textContent = "-";
+      setCandidatePhoto("", "");
     }
 
     function escapeHtml(value) {
