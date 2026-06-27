@@ -44,6 +44,8 @@
       font-weight: 900;
       letter-spacing: 0.1px;
       box-shadow: 0 8px 18px rgba(0,45,95,0.08);
+      position: relative;
+      z-index: 5;
     }
 
     .top-contact-item {
@@ -51,12 +53,6 @@
       align-items: center;
       gap: 8px;
       white-space: nowrap;
-    }
-
-    .contact-icon {
-      color: var(--navy);
-      font-size: 18px;
-      line-height: 1;
     }
 
     .page-shell {
@@ -346,14 +342,6 @@
       letter-spacing: 0.55px;
     }
 
-    .photo-subtitle {
-      margin-top: 5px;
-      color: #475569;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
     .details-data {
       min-width: 0;
     }
@@ -433,7 +421,7 @@
     .authorized-section {
       width: min(860px, 100%);
       margin: 0 auto 36px;
-      padding: 18px 22px 20px;
+      padding: 14px 18px;
       background: rgba(255,255,255,0.94);
       border: 1px solid rgba(0,45,95,0.14);
       border-radius: 16px;
@@ -441,52 +429,13 @@
       text-align: center;
     }
 
-    .authorized-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      color: var(--navy);
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .authorized-title::before,
-    .authorized-title::after {
-      content: "";
-      height: 2px;
-      width: 130px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .authority-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 12px;
-      align-items: center;
-    }
-
-    .authority-item {
-      min-height: 74px;
-      border: 1px solid #dce7f2;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      color: var(--navy);
-      font-weight: 900;
-      font-size: 17px;
-      box-shadow: 0 8px 18px rgba(0,45,95,0.06);
-    }
-
-    .authority-item.small {
-      font-size: 14px;
-      line-height: 1.15;
+    .authorized-strip {
+      width: 100%;
+      max-width: 858px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
     }
 
     .trust-section {
@@ -672,17 +621,8 @@
         margin-bottom: 20px;
       }
 
-      .authorized-title {
-        font-size: 14px;
-      }
-
-      .authorized-title::before,
-      .authorized-title::after {
-        width: 45px;
-      }
-
-      .authority-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .authorized-section {
+        padding: 10px;
       }
 
       .trust-grid {
@@ -700,10 +640,10 @@
 
 <body>
   <div class="top-contact-bar">
-    <div class="top-contact-item"><span class="contact-icon">✉</span> Query@Gulf-Skills.Com</div>
-    <div class="top-contact-item"><span class="contact-icon">☎</span> 013 - 8367155 / 8326161</div>
-    <div class="top-contact-item"><span class="contact-icon">▣</span> 8320854</div>
-    <div class="top-contact-item"><span class="contact-icon">🌐</span> WWW.Gulf-Skills.Com</div>
+    <div class="top-contact-item">✉ Query@Gulf-Skills.Com</div>
+    <div class="top-contact-item">☎ 013 - 8367155 / 8326161</div>
+    <div class="top-contact-item">▣ 8320854</div>
+    <div class="top-contact-item">🌐 WWW.Gulf-Skills.Com</div>
   </div>
 
   <div class="page-shell">
@@ -733,11 +673,6 @@
       <path d="M0 68 L258 450" stroke="url(#goldWave)" stroke-width="7" opacity="0.98"/>
       <path d="M0 392 C82 452 174 520 290 640" stroke="#dfe7ef" stroke-width="18" opacity="0.70" fill="none"/>
       <path d="M0 425 C105 495 200 560 320 690" stroke="#eef3f8" stroke-width="14" opacity="0.78" fill="none"/>
-
-      <path d="M-170 105 C80 155 200 360 330 640" stroke="#cbd6e2" stroke-width="1" opacity="0.50" fill="none"/>
-      <path d="M-150 135 C95 180 220 370 350 650" stroke="#cbd6e2" stroke-width="1" opacity="0.42" fill="none"/>
-      <path d="M-130 165 C110 205 240 390 370 670" stroke="#cbd6e2" stroke-width="1" opacity="0.36" fill="none"/>
-      <path d="M-110 195 C125 230 260 410 390 690" stroke="#cbd6e2" stroke-width="1" opacity="0.32" fill="none"/>
 
       <path d="M1216 388 C1090 500 985 590 825 630" stroke="#d8e1ea" stroke-width="24" opacity="0.66" fill="none"/>
       <path d="M1216 420 C1088 530 985 610 820 652" stroke="#ebb02d" stroke-width="11" opacity="0.92" fill="none"/>
@@ -797,7 +732,6 @@
                 </div>
 
                 <div class="photo-caption">Candidate Photo</div>
-                <div class="photo-subtitle" id="photoName">Verified Candidate</div>
               </div>
 
               <div class="details-data">
@@ -848,16 +782,7 @@
           </section>
 
           <section class="authorized-section">
-            <div class="authorized-title">Authorized & Recognized By</div>
-
-            <div class="authority-grid">
-              <div class="authority-item">LEEA</div>
-              <div class="authority-item">IOSH</div>
-              <div class="authority-item small">TÜV<br>SÜD</div>
-              <div class="authority-item">DNV</div>
-              <div class="authority-item">ASTM</div>
-              <div class="authority-item">ASNT</div>
-            </div>
+            <img src="authorized-recognized.webp" class="authorized-strip" alt="Authorized and Recognized By LEEA, IOSH, TÜV SÜD, DNV, ASTM, ASNT">
           </section>
 
         </div>
@@ -980,7 +905,6 @@
       document.getElementById("expiryDate").textContent = expiryDate || "-";
       document.getElementById("remarks").textContent = remarks || "-";
 
-      document.getElementById("photoName").textContent = candidateName || "Verified Candidate";
       setCandidatePhoto(candidatePhoto, candidateName);
       setStatus(record.status);
     }
